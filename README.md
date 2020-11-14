@@ -21,3 +21,12 @@ dotnet ef migrations add CreateIdentitySchema --context petclinicdemo.Data.Appli
 ## Starup
 
 - dotnet watch run
+
+## Proceso de Ramas
+
+- JP: Crea el proyecto inicial con el login y con la bd conectada y hace push sobre main
+
+- Patricia: git clone URL ex: "https://github.com/fduartej/petclinicdemo.git"
+
+- Jean Pierre: git clone URL 
+
