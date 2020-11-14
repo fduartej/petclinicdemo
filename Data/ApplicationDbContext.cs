@@ -14,5 +14,7 @@ namespace petclinicdemo.Data
         }
 
         public DbSet<petclinicdemo.Models.Contacto> Contactos { get; set; }
+
+        public DbSet<petclinicdemo.Models.Producto> Productos { get; set; }
     }
 }
