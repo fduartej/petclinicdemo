@@ -8,7 +8,8 @@ Proyecto de Clinica de Mascotas
 
 ## migrations 
 
-- dotnet ef migrations add CreateIdentitySchema (default)
+- Remover la carpeta Migrations
+- Cambiar la cadena de conexion
 - dotnet ef migrations add Initial --context EsportshubApi.Models.ApplicationDbContext -o YourFolderPath
 
 - example:
@@ -17,3 +18,6 @@ dotnet ef migrations add CreateIdentitySchema --context petclinicdemo.Data.Appli
 
 - dotnet ef database update
 
+## Starup
+
+- dotnet watch run
