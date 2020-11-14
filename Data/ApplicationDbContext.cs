@@ -12,5 +12,7 @@ namespace petclinicdemo.Data
             : base(options)
         {
         }
+
+        public DbSet<petclinicdemo.Models.Contacto> Contactos { get; set; }
     }
 }

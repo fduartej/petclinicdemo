@@ -1,0 +1,45 @@
+@model petclinicdemo.Models.Contacto
+
+@{
+    ViewData["Title"] = "Contacto";
+}
+
+<div class="row">
+    <div class="col-md-4">  
+        <h1 class="display-4">Editar Contacto</h1>
+        <form asp-controller="Contacto" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>    
+
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>               
+                   
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>               
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>               
+
+            
+            <div class="form-group">
+                 <button type="submit" class="btn btn-default">Actualizar</button> 
+            </div>                
+
+        </form>
+            
+        <td>@Html.DisplayTextFor(model => model.Response)</td>    
+    
+    </div>
+</div>
