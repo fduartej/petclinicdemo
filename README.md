@@ -18,7 +18,7 @@ dotnet ef migrations add CreateIdentitySchema --context petclinicdemo.Data.Appli
 
 - dotnet ef database update
 
-## Starup
+## Startup
 
 - dotnet watch run
 
@@ -30,3 +30,11 @@ dotnet ef migrations add CreateIdentitySchema --context petclinicdemo.Data.Appli
 
 - Jean Pierre: git clone URL 
 
+## customizar el ui
+
+https://andrewlock.net/customising-aspnetcore-identity-without-editing-the-pagemodel/
+Pasos
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.1.4
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.1.4
+dotnet tool install --global dotnet-aspnet-codegenerator --version 3.1.4
+dotnet aspnet-codegenerator identity -dc MinerTrabajoFInal.Data.ApplicationDbContext --files "Account.Register"
