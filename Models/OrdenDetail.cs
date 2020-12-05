@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace petclinicdemo.Models
 {
-    [Table("t_order_detail")]
+    [Table("t_orden_detail")]
     public class OrdenDetail
     {
 
@@ -20,7 +20,7 @@ namespace petclinicdemo.Models
 
         [Display(Name="Correo")]
         [Column("email")]
-        public String email;
+        public String Email { get; set; }
  
         [Display(Name="Cantidad")]
         [Column("quantity")]

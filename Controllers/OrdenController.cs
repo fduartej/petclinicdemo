@@ -40,10 +40,12 @@ namespace petclinicdemo.Controllers
             orderDetail.Price = producto.Price;
             orderDetail.Quantity = 1;
             var name = _userManager.GetUserName(User);
-            orderDetail.email=name;
+            //if is null please login
+            orderDetail.Email=name;
+            
             _context.Add(orderDetail);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Producto");
         }
 
 
