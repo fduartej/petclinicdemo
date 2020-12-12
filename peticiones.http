@@ -1,0 +1,14 @@
+GET  https://localhost:5001/api/productos/2 HTTP/1.1
+Accept: application/json
+
+GET  https://localhost:5001/api/productos HTTP/1.1
+Accept: application/json
+
+POST https://localhost:5001/api/productos HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "pet4",
+    "imagenName": "pet1.png",
+    "price": 300.00
+}

@@ -25,11 +25,25 @@ namespace petclinicdemo.Controllers.Rest
 
 
         [HttpGet]
-        public IEnumerable<Producto> Get()
+        
+        public IEnumerable<Producto> ListProductos()
         {
              var listProductos=_context.Productos.OrderBy(s => s.ID).ToList();   
              return listProductos.ToArray();
         }
 
+        [HttpGet("{id}")]
+        public Producto GetProduct(int? id)
+        {
+            var producto =  _context.Productos.Find(id);
+            return producto;
+        }
+
+        [HttpPost]
+        public Producto CreateProduct(Producto producto){
+            _context.Add(producto);
+            _context.SaveChanges();
+            return producto;
+        }
     }
 }
