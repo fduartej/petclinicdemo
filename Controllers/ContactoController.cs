@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using petclinicdemo.Models;
 using petclinicdemo.Data;
+using System.Dynamic;
 
 namespace petclinicdemo.Controllers
 {
@@ -34,7 +35,12 @@ namespace petclinicdemo.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var listProductos=_context.Productos.ToList();
+            Contacto contacto = new Contacto();
+            dynamic model = new ExpandoObject();
+            model.contacto = contacto;
+            model.productos = listProductos;
+            return View(model);
         }
 
         [HttpPost]
