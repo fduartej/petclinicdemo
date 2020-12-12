@@ -11,6 +11,7 @@ namespace petclinicdemo.Models.DTO
         public string DisplayName { get; set; }
 
         [JsonPropertyName("followers")]
+
         public Followers followers { get; set; }
 
     }
@@ -18,6 +19,7 @@ namespace petclinicdemo.Models.DTO
     public class Followers
     {
         [JsonPropertyName("total")]
+        [Display(Name="Followers")]
         public int Total { get; set; }
     }
 
