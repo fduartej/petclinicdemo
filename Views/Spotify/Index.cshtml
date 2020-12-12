@@ -1,0 +1,19 @@
+@model petclinicdemo.Models.DTO.UserSpotify
+
+@{
+    ViewData["Title"] = "Spotify Info";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+  <dl class="dl-horizontal">
+    <dt>
+       @Html.DisplayNameFor(model => model.DisplayName) :
+       @Html.DisplayFor(model => model.DisplayName)
+    </dt>
+    <dt>
+       @Html.DisplayNameFor(model => model.followers.Total) :
+       @Html.DisplayFor(model => model.followers.Total)
+    </dt>    
+  </dl>
+</div>
