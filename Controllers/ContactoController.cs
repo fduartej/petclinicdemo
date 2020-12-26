@@ -40,8 +40,19 @@ namespace petclinicdemo.Controllers
             dynamic model = new ExpandoObject();
             model.contacto = contacto;
             model.productos = listProductos;
-            return View("MiVista",model);
+            return View(model);
         }
+
+        [HttpPost]
+        public IActionResult CreateDynamic(dynamic data){
+            Contacto objContacto = new Contacto();
+            objContacto.Name =data.Name;
+            objContacto.Email =data.Email;
+            _context.Add(objContacto);
+            _context.SaveChanges();
+            return View(objContacto);
+        }
+     
 
         [HttpPost]
         public IActionResult Create(Contacto objContacto){
