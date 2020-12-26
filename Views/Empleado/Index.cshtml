@@ -11,6 +11,14 @@
             <input type="submit" value="Filter" />
         </p>
 </form>
+<form asp-controller="Empleado" asp-action="Index">
+        <select name="SearchString" id="cars" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            <option value="Juan">Juan</option>
+            <option value="Jhon">Jhon</option>
+        </select>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

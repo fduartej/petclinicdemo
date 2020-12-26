@@ -39,7 +39,7 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.1.4
 dotnet tool install --global dotnet-aspnet-codegenerator --version 3.1.4
 dotnet aspnet-codegenerator identity -dc MinerTrabajoFInal.Data.ApplicationDbContext --files "Account.Register"
 
-## Crear views 
+## Crear CRUD 
 
 dotnet aspnet-codegenerator controller -name EmpleadoController -m Empleado -dc petclinicdemo.Data.ApplicationDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
 

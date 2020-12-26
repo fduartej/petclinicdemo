@@ -40,7 +40,7 @@ namespace petclinicdemo.Controllers
             dynamic model = new ExpandoObject();
             model.contacto = contacto;
             model.productos = listProductos;
-            return View(model);
+            return View("MiVista",model);
         }
 
         [HttpPost]
