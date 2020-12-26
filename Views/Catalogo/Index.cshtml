@@ -1,0 +1,39 @@
+@model IEnumerable<petclinicdemo.Models.Producto>
+
+<h2>Catalogo</h2>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <th scope="col">
+                    #
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">
+                <a asp-controller="Orden" 
+                  asp-action="AddItem" asp-route-id="@item.ID">Agregar</a> |
+            </th>
+            <td>
+                <img src="~/images/@item.ImagenName" alt="@item.Name" width="100" height="150">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }        
+    </tbody>    
+</table>

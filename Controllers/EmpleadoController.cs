@@ -10,22 +10,32 @@ using petclinicdemo.Models;
 
 namespace petclinicdemo.Controllers
 {
-    public class ProductoController : Controller
+    public class EmpleadoController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductoController(ApplicationDbContext context)
+        public EmpleadoController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Producto
-        public async Task<IActionResult> Index()
+        // GET: Empleado
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Productos.ToListAsync());
+            var empleados = from m in _context.Empleados
+            select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                empleados = empleados.Where(s => s.Name.Contains(searchString) );
+            }
+            
+            return View(await empleados.ToListAsync());
+            
+            //return View(await _context.Empleados.ToListAsync());
         }
 
-        // GET: Producto/Details/5
+        // GET: Empleado/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +43,39 @@ namespace petclinicdemo.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (producto == null)
+            if (empleado == null)
             {
                 return NotFound();
             }
 
-            return View(producto);
+            return View(empleado);
         }
 
-        // GET: Producto/Create
+        // GET: Empleado/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Producto/Create
+        // POST: Empleado/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,ImagenName,Price")] Producto producto)
+        public async Task<IActionResult> Create([Bind("ID,Name,LastName")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(producto);
+                _context.Add(empleado);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(producto);
+            return View(empleado);
         }
 
-        // GET: Producto/Edit/5
+        // GET: Empleado/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +83,22 @@ namespace petclinicdemo.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos.FindAsync(id);
-            if (producto == null)
+            var empleado = await _context.Empleados.FindAsync(id);
+            if (empleado == null)
             {
                 return NotFound();
             }
-            return View(producto);
+            return View(empleado);
         }
 
-        // POST: Producto/Edit/5
+        // POST: Empleado/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,ImagenName,Price")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,LastName")] Empleado empleado)
         {
-            if (id != producto.ID)
+            if (id != empleado.ID)
             {
                 return NotFound();
             }
@@ -97,12 +107,12 @@ namespace petclinicdemo.Controllers
             {
                 try
                 {
-                    _context.Update(producto);
+                    _context.Update(empleado);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductoExists(producto.ID))
+                    if (!EmpleadoExists(empleado.ID))
                     {
                         return NotFound();
                     }
@@ -113,10 +123,10 @@ namespace petclinicdemo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(producto);
+            return View(empleado);
         }
 
-        // GET: Producto/Delete/5
+        // GET: Empleado/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +134,30 @@ namespace petclinicdemo.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos
+            var empleado = await _context.Empleados
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (producto == null)
+            if (empleado == null)
             {
                 return NotFound();
             }
 
-            return View(producto);
+            return View(empleado);
         }
 
-        // POST: Producto/Delete/5
+        // POST: Empleado/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var producto = await _context.Productos.FindAsync(id);
-            _context.Productos.Remove(producto);
+            var empleado = await _context.Empleados.FindAsync(id);
+            _context.Empleados.Remove(empleado);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductoExists(int id)
+        private bool EmpleadoExists(int id)
         {
-            return _context.Productos.Any(e => e.ID == id);
+            return _context.Empleados.Any(e => e.ID == id);
         }
     }
 }

@@ -1,11 +1,16 @@
-@model IEnumerable<petclinicdemo.Models.Producto>
+@model IEnumerable<petclinicdemo.Models.Empleado>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-
+<form asp-controller="Empleado" asp-action="Index">
+        <p>
+            Nombre: <input type="text" name="SearchString">
+            <input type="submit" value="Filter" />
+        </p>
+</form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -16,10 +21,7 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImagenName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th></th>
         </tr>
@@ -31,10 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImagenName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

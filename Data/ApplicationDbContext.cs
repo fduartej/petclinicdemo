@@ -18,5 +18,8 @@ namespace petclinicdemo.Data
         public DbSet<petclinicdemo.Models.Producto> Productos { get; set; }
 
         public DbSet<petclinicdemo.Models.OrdenDetail> OrdenDetails { get; set; }
+
+        public DbSet<petclinicdemo.Models.Empleado> Empleados { get; set; }
+
     }
 }
