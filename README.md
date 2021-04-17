@@ -3,7 +3,7 @@ Proyecto de Clinica de Mascotas
 
 ## Crear un proyecto mvc con login
 
-- dotnet new mvc -au Individiual
+- otnet new mvc --auth Individual -o <MYAPP>
 
 
 ## migrations 
